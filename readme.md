@@ -202,7 +202,30 @@ To run the application:
 
 4. Access the interactive documentation at: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
 
----
+
+# PostgreSQL Queries
+```
+CREATE TABLE homeworks (
+    id SERIAL PRIMARY KEY,
+    title VARCHAR,
+    description VARCHAR,
+    subject VARCHAR,
+    budget FLOAT,
+    latitude FLOAT,
+    longitude FLOAT,
+    contact_info VARCHAR,
+    nickname VARCHAR
+);
+
+CREATE TABLE requests (
+    id SERIAL PRIMARY KEY,
+    homework_id INTEGER,
+    solver_nickname VARCHAR,
+    message VARCHAR,
+    contact_info VARCHAR,
+    status VARCHAR DEFAULT 'pending'
+);
+```
 
 ### License
 
