@@ -15,5 +15,25 @@ def get_db():
 
 # Post homework (for students)
 @router.post("/")
-def post_homework(title: str, description: str, subject: str, budget: float, latitude: float, longitude: float, contact_info: str, nickname: str, db: Session = Depends(get_db)):
-    return crud.create_homework(db, title, description, subject, budget, latitude, longitude, contact_info, nickname)
+def post_homework(
+    title: str,
+    description: str,
+    subject: str,
+    budget: float,
+    latitude: float,
+    longitude: float,
+    contact_info: str,
+    nickname: str,
+    db: Session = Depends(get_db)
+):
+    return crud.create_homework(
+        db,
+        title,
+        description,
+        subject,
+        budget,
+        latitude,
+        longitude,
+        contact_info,
+        nickname
+    )

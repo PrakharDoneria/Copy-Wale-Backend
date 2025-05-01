@@ -1,12 +1,13 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import Column, Integer, String, Float
+from database import Base  # Import Base to enable SQLAlchemy ORM
 
 # Homework model (for students)
-class Homework:
+class Homework(Base):
     __tablename__ = 'homeworks'
 
     id = Column(Integer, primary_key=True, index=True)
-    title = Column(String, index=True)
+    title = Column(String)
     description = Column(String)
     subject = Column(String)
     budget = Column(Float)
@@ -16,7 +17,7 @@ class Homework:
     nickname = Column(String)
 
 # Request model (for solvers)
-class Request:
+class Request(Base):
     __tablename__ = 'requests'
 
     id = Column(Integer, primary_key=True, index=True)
@@ -74,4 +75,4 @@ def get_requests_by_solver(db: Session, solver_nickname: str):
 
 # Get homework posts within a given radius (simplified version, not using haversine formula here)
 def get_homeworks_within_radius(db: Session, latitude: float, longitude: float, radius_km: float):
-    return db.query(Homework).all()  # For now, returns all homeworks (you can implement radius filtering logic here)
+    return db.query(Homework).all()  # For now, returns all homeworks
