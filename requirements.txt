@@ -1,4 +1,4 @@
-psycopg2-binaryUse psycopg2-binary instead of psycopg2
+psycopg2-binary
 fastapi
 uvicorn
 sqlalchemy
