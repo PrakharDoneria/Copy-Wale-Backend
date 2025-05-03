@@ -7,12 +7,12 @@ from students import addhomework, gethomework, deletehomework
 # --- CA Certificate Download (Run once on startup) ---
 def download_ca_cert():
     cert_url = 'https://cockroachlabs.cloud/clusters/41c32845-f06a-4f55-a5aa-0e8842e1a79a/cert'
-    cert_dir = '/tmp/.postgresql'  
+    cert_dir = os.path.expanduser('~/.postgresql')
     cert_path = os.path.join(cert_dir, 'root.crt')
 
     os.makedirs(cert_dir, exist_ok=True)
 
-    if not os.path.exists(cert_path):
+    if not os.path.exists(cert_path):  
         response = requests.get(cert_url)
         if response.status_code == 200:
             with open(cert_path, 'wb') as f:
